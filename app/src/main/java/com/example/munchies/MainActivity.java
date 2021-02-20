@@ -13,8 +13,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Hides action bar
         getSupportActionBar().hide();
 
+        //Shows splash screen for 4 seconds before showing home screen
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {
