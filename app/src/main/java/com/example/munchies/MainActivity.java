@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 Intent homeIntent = new Intent(MainActivity.this, HomeActivity.class);
                 startActivity(homeIntent);
-                finish();
             }
         },SPASH_TIME_OUT);
     }
