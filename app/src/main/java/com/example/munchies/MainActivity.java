@@ -7,7 +7,7 @@ import android.os.Handler;
 
 
 public class MainActivity extends AppCompatActivity {
-    private static int SPASH_TIME_OUT = 4000;
+    private static int SPASH_TIME_OUT = 2000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {
-                Intent homeIntent = new Intent(MainActivity.this, HomeActivity.class);
+                Intent homeIntent = new Intent(MainActivity.this, InputActivity.class);
                 startActivity(homeIntent);
             }
         },SPASH_TIME_OUT);
