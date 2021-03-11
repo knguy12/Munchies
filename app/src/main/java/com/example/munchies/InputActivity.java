@@ -1,5 +1,6 @@
 package com.example.munchies;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -57,6 +58,8 @@ public class InputActivity extends AppCompatActivity {
                     final double heightToM = convertCM(heightConverted);
                     //Adds it to database
                     AddData(nameConverted, gender, heightToM, weightConverted, exercise, BMI);
+                    Intent homeIntent = new Intent(InputActivity.this, HomeActivity.class);
+                    startActivity(homeIntent);
                 }
                 else
                     toastMessage("Please Fill In All Fields Before Continuing");
