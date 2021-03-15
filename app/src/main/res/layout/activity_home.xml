@@ -40,7 +40,7 @@
         app:layout_constraintVertical_bias="0.457" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/recipeBtn"
         android:layout_width="120dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
