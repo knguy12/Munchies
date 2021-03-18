@@ -3,6 +3,7 @@ package com.example.munchies;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -105,4 +106,46 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(query);
     }
 
+    public String getStringUserName() throws SQLException {
+        String username = "";
+        Cursor cursor = this.getReadableDatabase().query(
+                TABLE_NAME, new String[] { COL0 },
+                null, null, null, null, null);
+        if (cursor.moveToFirst()) {
+            do {
+                username = cursor.getString(0);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        return username;
+    }
+    public String getStringWeight() throws SQLException {
+        String weight = "";
+        Cursor cursor = this.getReadableDatabase().query(
+                TABLE_NAME, new String[] { COL3 },
+                null, null, null, null, null);
+        if (cursor.moveToFirst()) {
+            do {
+                weight = cursor.getString(0);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        return weight;
+    }
+    public String getStringHeight() throws SQLException {
+        String height = "";
+        Cursor cursor = this.getReadableDatabase().query(
+                TABLE_NAME, new String[] { COL2 },
+                null, null, null, null, null);
+        if (cursor.moveToFirst()) {
+            do {
+                height = cursor.getString(0);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        return height;
+    }
 }

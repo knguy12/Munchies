@@ -8,18 +8,26 @@ import android.widget.Button;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private Button recipeBtn;
+    private Button recipeBtn, userBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        userBtn = (Button) findViewById(R.id.userBtn);
         recipeBtn = (Button) findViewById(R.id.recipeBtn);
+
         recipeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openActivityRecipeTypes();
+            }
+        });
+        userBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openActivityUserProfile();
             }
         });
 
@@ -32,4 +40,9 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(recipeType);
     }
 
+    //method that opens the user profile activity
+    public void openActivityUserProfile(){
+        Intent userProfile = new Intent(HomeActivity.this, UserProfileActivity.class);
+        startActivity(userProfile);
+    }
 }
