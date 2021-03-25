@@ -20,6 +20,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COL3 = "Weight";
     private static final String COL4 = "ActivityLevel";
     private static final String COL5 = "BMI";
+    private static final String COL6 = "Age";
+    private static final String COL7 = "DailyCaloriesNeeded";
+    private static final String COL8 = "WeightGoal";
 
 
 
@@ -34,7 +37,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + COL0 + " STRING PRIMARY KEY, " + COL1 +
                 " STRING, " + COL2 + " DOUBLE, " + COL3 + " INTEGER, "
                 + COL4 + " STRING,"
-                + COL5 + " DOUBLE" +")";
+                + COL5 + " DOUBLE,"
+                + COL6 + " INTEGER,"
+                + COL7 + " INTEGER,"
+                + COL8 + " STRING"+")";
         db.execSQL(CREATE_ACCOUNTS_TABLE);
     }
 
@@ -46,7 +52,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //Adds user data into database
-    public boolean addData(String name, String gender, double height, int weight, String ActivityLevel, double BMI) {
+    public boolean addData(String name, String gender, double height, int weight, String ActivityLevel, double BMI, int age, int dailyCaloriesNeeded, String weightGoal) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL0, name);
@@ -55,6 +61,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL3, weight);
         contentValues.put(COL4, ActivityLevel);
         contentValues.put(COL5, BMI);
+        contentValues.put(COL6, age);
+        contentValues.put(COL7, dailyCaloriesNeeded);
+        contentValues.put(COL8, weightGoal);
 
         long result = db.insert(TABLE_NAME, null, contentValues);
 
@@ -65,47 +74,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
         }
     }
-    public Cursor getUserName(){
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT " + COL0 + " FROM " + TABLE_NAME;
-        Cursor data = db.rawQuery(query, null);
-        return data;
-    }
-    public Cursor getUserBMI(){
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT " + COL1 + " FROM " + TABLE_NAME;
-        Cursor data = db.rawQuery(query, null);
-        return data;
-    }
-    public Cursor getUserDiet(){
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT " + COL2 + " FROM " + TABLE_NAME;
-        Cursor data = db.rawQuery(query, null);
-        return data;
-    }
-
-    public void updateName(String newName){
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "UPDATE " + TABLE_NAME + " SET " + COL0 + " = '" + newName;
-        Log.d(TAG, "updateName: query: " + query);
-        Log.d(TAG, "updateName: Setting name to " + newName);
-        db.execSQL(query);
-    }
-    public void updateBMI(double newBMI){
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "UPDATE " + TABLE_NAME + " SET " + COL1 + " = '" + newBMI;
-        Log.d(TAG, "updateBMI: query: " + query);
-        Log.d(TAG, "updateBMI: Setting name to " + newBMI);
-        db.execSQL(query);
-    }
-    public void updateDiet(String newDiet){
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "UPDATE " + TABLE_NAME + " SET " + COL2 + " = '" + newDiet;
-        Log.d(TAG, "updateBMI: query: " + query);
-        Log.d(TAG, "updateBMI: Setting name to " + newDiet);
-        db.execSQL(query);
-    }
-
     public String getStringUserName() throws SQLException {
         String username = "";
         Cursor cursor = this.getReadableDatabase().query(
@@ -147,5 +115,89 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
 
         return height;
+    }
+    public String getStringGender() throws SQLException {
+        String gender = "";
+        Cursor cursor = this.getReadableDatabase().query(
+                TABLE_NAME, new String[] { COL1 },
+                null, null, null, null, null);
+        if (cursor.moveToFirst()) {
+            do {
+                gender = cursor.getString(0);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        return gender;
+    }
+    public String getStringBMI() throws SQLException {
+        String BMI = "";
+        Cursor cursor = this.getReadableDatabase().query(
+                TABLE_NAME, new String[] { COL5 },
+                null, null, null, null, null);
+        if (cursor.moveToFirst()) {
+            do {
+                BMI = cursor.getString(0);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        return BMI;
+    }
+    public String getStringActivityLevel() throws SQLException {
+        String activityLevel = "";
+        Cursor cursor = this.getReadableDatabase().query(
+                TABLE_NAME, new String[] { COL4 },
+                null, null, null, null, null);
+        if (cursor.moveToFirst()) {
+            do {
+                activityLevel = cursor.getString(0);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        return activityLevel;
+    }
+    public String getStringCaloriesNeeded() throws SQLException {
+        String caloriesNeeded = "";
+        Cursor cursor = this.getReadableDatabase().query(
+                TABLE_NAME, new String[] { COL7 },
+                null, null, null, null, null);
+        if (cursor.moveToFirst()) {
+            do {
+                caloriesNeeded = cursor.getString(0);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        return caloriesNeeded;
+    }
+    public String getStringWeightGoal() throws SQLException {
+        String weightGoal = "";
+        Cursor cursor = this.getReadableDatabase().query(
+                TABLE_NAME, new String[] { COL8 },
+                null, null, null, null, null);
+        if (cursor.moveToFirst()) {
+            do {
+                weightGoal = cursor.getString(0);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        return weightGoal;
+    }
+    public String getStringAge() throws SQLException {
+        String age = "";
+        Cursor cursor = this.getReadableDatabase().query(
+                TABLE_NAME, new String[] { COL6 },
+                null, null, null, null, null);
+        if (cursor.moveToFirst()) {
+            do {
+                age = cursor.getString(0);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        return age;
     }
 }

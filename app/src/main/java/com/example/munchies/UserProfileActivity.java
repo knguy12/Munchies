@@ -17,24 +17,36 @@ import android.widget.Toast;
 public class UserProfileActivity extends AppCompatActivity{
 
     private ImageView profileImage;
-    private TextView userName, userWeight, userHeight;
+    private TextView userName, userWeight, userHeight, userGender, userActivity, userAge, userBMI, userWeightGoal, userCalories;
     private Button setProfileImage;
     DatabaseHelper databaseHelper;
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userprofile);
 
         profileImage = findViewById(R.id.profileImage);
         setProfileImage = findViewById(R.id.changeProfilePicture);
-        userName = (TextView) findViewById(R.id.userName);
-        userHeight = (TextView) findViewById(R.id.userHeight);
-        userWeight = (TextView) findViewById(R.id.userWeight);
+        userName = findViewById(R.id.userName);
+        userHeight = findViewById(R.id.userHeight);
+        userWeight = findViewById(R.id.userWeight);
+        userGender = findViewById(R.id.userGender);
+        userActivity = findViewById(R.id.userActivity);
+        userAge = findViewById(R.id.userAge);
+        userBMI = findViewById(R.id.userBMI);
+        userWeightGoal = findViewById(R.id.userWeightGoal);
+        userCalories = findViewById(R.id.userCalories);
+
         databaseHelper = new DatabaseHelper(this);
 
         userName.setText(databaseHelper.getStringUserName());
         userWeight.setText((databaseHelper.getStringWeight()) + "lbs");
         userHeight.setText((databaseHelper.getStringHeight()) + "cm");
+        userGender.setText(databaseHelper.getStringGender());
+        userActivity.setText(databaseHelper.getStringActivityLevel());
+        userBMI.setText(databaseHelper.getStringBMI());
+        userCalories.setText(databaseHelper.getStringCaloriesNeeded());
+        userWeightGoal.setText(databaseHelper.getStringWeightGoal());
+        userAge.setText(databaseHelper.getStringAge());
 
         setProfileImage.setOnClickListener(new View.OnClickListener(){
             @Override

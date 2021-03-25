@@ -8,6 +8,7 @@ import android.os.Handler;
 
 public class MainActivity extends AppCompatActivity {
     private static int SPASH_TIME_OUT = 2000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -15,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Hides action bar
         getSupportActionBar().hide();
-
+        //TODO check if user has already inputted data into the db and if so then go to HomeActivity instead of InputActivity
         //Shows splash screen for 4 seconds before showing home screen
         new Handler().postDelayed(new Runnable(){
             @Override
