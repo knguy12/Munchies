@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private Button recipeBtn, userBtn;
+    private Button recipeBtn, userBtn, mapBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +17,7 @@ public class HomeActivity extends AppCompatActivity {
 
         userBtn = (Button) findViewById(R.id.userBtn);
         recipeBtn = (Button) findViewById(R.id.recipeBtn);
+        mapBtn = (Button) findViewById(R.id.button2);
 
         recipeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,7 +31,12 @@ public class HomeActivity extends AppCompatActivity {
                 openActivityUserProfile();
             }
         });
-
+        mapBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openActivityMap();
+            }
+        });
     }
 
 
@@ -44,5 +50,10 @@ public class HomeActivity extends AppCompatActivity {
     public void openActivityUserProfile(){
         Intent userProfile = new Intent(HomeActivity.this, UserProfileActivity.class);
         startActivity(userProfile);
+    }
+
+    public void openActivityMap(){
+        Intent mapActivity = new Intent(HomeActivity.this, MapActivity.class);
+        startActivity(mapActivity);
     }
 }

@@ -5,4 +5,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="set_picture">Set Picture</string>
     <string name="profilePicture">something</string>
+
+    <string name="google_maps_API_key">AIzaSyB__t6Q7aId_6SGJ-_aee_9l3lxOMUMqd0</string>
+
 </resources>
