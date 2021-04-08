@@ -69,12 +69,10 @@ public class InputActivity extends AppCompatActivity {
                     final String exercise = selectedExercise.getText().toString();
                     final String weightGroup = selectedWeightGoal.getText().toString();
 
-                    final double BMI = calculateBMI(weightConverted, heightConverted);
-                    final double heightToM = convertCM(heightConverted);
-
+                    final double BMI = calculateBMI(convertCM(heightConverted), weightConverted);
 
                     //Adds it to database
-                    AddData(nameConverted, gender, heightToM, weightConverted, exercise, BMI, ageConverted, calculateCalories(weightConverted, heightConverted, ageConverted, gender, weightGroup) ,weightGroup);
+                    AddData(nameConverted, gender, heightConverted, weightConverted, exercise, BMI, ageConverted, calculateCalories(weightConverted, heightConverted, ageConverted, gender, weightGroup) ,weightGroup);
                     Intent homeIntent = new Intent(InputActivity.this, HomeActivity.class);
                     startActivity(homeIntent);
                 }
@@ -85,11 +83,14 @@ public class InputActivity extends AppCompatActivity {
     }
     //Converts users height in centimeters to meters
     public double convertCM(int height){
-        return height/100;
+        return (double)height/100;
     }
     //Calculates Users BMI
-    public double calculateBMI(int height, int weight){
-        return weight/(Math.pow(convertCM(height), 2));
+    public double calculateBMI(double height, int weight){
+        double heightM = Math.pow(height, 2);
+        double weightM = weight * 0.453592;
+
+        return weightM/heightM;
     }
     public int calculateCalories(int weight, int height, int age, String gender, String weightGoal){
         double calories;
