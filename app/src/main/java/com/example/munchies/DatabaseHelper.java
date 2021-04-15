@@ -50,7 +50,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
-
+    //Gets the current amount of rows in the DB
+    public int getSizeOfDB(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        final Cursor cursor = db.rawQuery("SELECT Count(*) from userProfile;", null);
+        int size = 0;
+        if (cursor.moveToFirst()) {
+            do {
+                size = cursor.getInt(0);
+            } while (cursor.moveToNext());
+        }
+        return size;
+    }
     //Adds user data into database
     public boolean addData(String name, String gender, double height, int weight, String ActivityLevel, double BMI, int age, int dailyCaloriesNeeded, String weightGoal) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -73,6 +84,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         } else {
             return true;
         }
+    }
+    //Updates users information
+    public boolean updateData(String name, String gender, double height, int weight, String ActivityLevel, double BMI, int age, int dailyCaloriesNeeded, String weightGoal) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL0, name);
+        contentValues.put(COL1, gender);
+        contentValues.put(COL2, height);
+        contentValues.put(COL3, weight);
+        contentValues.put(COL4, ActivityLevel);
+        contentValues.put(COL5, BMI);
+        contentValues.put(COL6, age);
+        contentValues.put(COL7, dailyCaloriesNeeded);
+        contentValues.put(COL8, weightGoal);
+
+        db.update(TABLE_NAME, contentValues, "Name = ?", new String[]{ name });
+        return true;
     }
     public String getStringUserName() throws SQLException {
         String username = "";
@@ -200,4 +228,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return age;
     }
+
 }

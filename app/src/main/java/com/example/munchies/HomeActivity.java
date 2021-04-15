@@ -14,6 +14,8 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        getSupportActionBar().hide();
+
 
         userBtn = (Button) findViewById(R.id.userBtn);
         recipeBtn = (Button) findViewById(R.id.recipeBtn);
@@ -39,6 +41,10 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
 
     //method that opens the recipe type activity
     public void openActivityRecipeTypes(){
