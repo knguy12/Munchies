@@ -126,9 +126,9 @@ public class InputActivity extends AppCompatActivity {
             toastMessage("Something went wrong");
         }
     }
-    //Adds data into database
+    //Updates data into database
     public void updateData(String name, String gender, double height, int weight, String ActivityLevel, double BMI, int age, int dailyCaloriesNeeded, String weightGoal) {
-        boolean insertData = mDatabaseHelper.updateData(name, gender, height, weight, ActivityLevel, BMI, age, dailyCaloriesNeeded, weightGoal);
+        boolean insertData = mDatabaseHelper.updateData(mDatabaseHelper.getStringUserName(),name, gender, height, weight, ActivityLevel, BMI, age, dailyCaloriesNeeded, weightGoal);
         if (insertData) {
             toastMessage("User Profile Updated!");
         } else {

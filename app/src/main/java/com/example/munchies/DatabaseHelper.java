@@ -86,7 +86,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
     //Updates users information
-    public boolean updateData(String name, String gender, double height, int weight, String ActivityLevel, double BMI, int age, int dailyCaloriesNeeded, String weightGoal) {
+    public boolean updateData(String rowID, String name, String gender, double height, int weight, String ActivityLevel, double BMI, int age, int dailyCaloriesNeeded, String weightGoal) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL0, name);
@@ -99,7 +99,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL7, dailyCaloriesNeeded);
         contentValues.put(COL8, weightGoal);
 
-        db.update(TABLE_NAME, contentValues, "Name = ?", new String[]{ name });
+        db.update(TABLE_NAME, contentValues, "Name = ?", new String[]{ rowID });
         return true;
     }
     public String getStringUserName() throws SQLException {
