@@ -69,14 +69,19 @@ public class InputActivity extends AppCompatActivity {
                     final String exercise = selectedExercise.getText().toString();
                     final String weightGroup = selectedWeightGoal.getText().toString();
 
-                    final double BMI = calculateBMI(weightConverted, heightConverted);
-                    final double heightToM = convertCM(heightConverted);
-
-
-                    //Adds it to database
-                    AddData(nameConverted, gender, heightToM, weightConverted, exercise, BMI, ageConverted, calculateCalories(weightConverted, heightConverted, ageConverted, gender, weightGroup) ,weightGroup);
-                    Intent homeIntent = new Intent(InputActivity.this, HomeActivity.class);
-                    startActivity(homeIntent);
+                    final double BMI = calculateBMI(convertCM(heightConverted), weightConverted);
+                    //Checks to see if DB is empty first, if it is then add in data
+                    if(mDatabaseHelper.getSizeOfDB() == 0) {
+                        //Adds it to database
+                        AddData(nameConverted, gender, heightConverted, weightConverted, exercise, BMI, ageConverted, calculateCalories(weightConverted, heightConverted, ageConverted, gender, weightGroup, exercise) ,weightGroup);
+                        Intent homeIntent = new Intent(InputActivity.this, HomeActivity.class);
+                        startActivity(homeIntent);
+                    }//If DB already has a information in it, update the profile
+                    else if(mDatabaseHelper.getSizeOfDB() > 0){
+                        updateData(nameConverted, gender, heightConverted, weightConverted, exercise, BMI, ageConverted, calculateCalories(weightConverted, heightConverted, ageConverted, gender, weightGroup, exercise) ,weightGroup);
+                        Intent profileIntent = new Intent(InputActivity.this, UserProfileActivity.class);
+                        startActivity(profileIntent);
+                    }
                 }
                 else
                     toastMessage("Please Fill In All Fields Before Continuing");
@@ -85,13 +90,16 @@ public class InputActivity extends AppCompatActivity {
     }
     //Converts users height in centimeters to meters
     public double convertCM(int height){
-        return height/100;
+        return (double)height/100;
     }
     //Calculates Users BMI
-    public double calculateBMI(int height, int weight){
-        return weight/(Math.pow(convertCM(height), 2));
+    public double calculateBMI(double height, int weight){
+        double heightM = Math.pow(height, 2);
+        double weightM = weight * 0.453592;
+
+        return weightM/heightM;
     }
-    public int calculateCalories(int weight, int height, int age, String gender, String weightGoal){
+    public int calculateCalories(int weight, int height, int age, String gender, String weightGoal, String selectedExercise){
         double calories;
         if(gender.equals("Male"))
             calories = (66 + (6.3 * weight) + (12.9 * height/2.54) - (6.8 * age));
@@ -101,13 +109,28 @@ public class InputActivity extends AppCompatActivity {
             calories -= 500;
         else if(weightGoal.equals("Gain Weight"))
             calories += 500;
+        if(selectedExercise.equals("Little to None"))
+            calories *= 1.2;
+        else if (selectedExercise.equals("Moderate(2-3 times a week)"))
+            calories *= 1.55;
+        else if(selectedExercise.equals("Excessive(6 or more times a week)"))
+            calories *= 1.9;
         return (int)calories;
     }
     //Adds data into database
     public void AddData(String name, String gender, double height, int weight, String ActivityLevel, double BMI, int age, int dailyCaloriesNeeded, String weightGoal) {
         boolean insertData = mDatabaseHelper.addData(name, gender, height, weight, ActivityLevel, BMI, age, dailyCaloriesNeeded, weightGoal);
         if (insertData) {
-            toastMessage("Data Successfully Inserted!");
+            toastMessage("User Profile Saved!");
+        } else {
+            toastMessage("Something went wrong");
+        }
+    }
+    //Updates data into database
+    public void updateData(String name, String gender, double height, int weight, String ActivityLevel, double BMI, int age, int dailyCaloriesNeeded, String weightGoal) {
+        boolean insertData = mDatabaseHelper.updateData(mDatabaseHelper.getStringUserName(),name, gender, height, weight, ActivityLevel, BMI, age, dailyCaloriesNeeded, weightGoal);
+        if (insertData) {
+            toastMessage("User Profile Updated!");
         } else {
             toastMessage("Something went wrong");
         }

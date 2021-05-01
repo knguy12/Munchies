@@ -18,12 +18,14 @@ public class UserProfileActivity extends AppCompatActivity{
 
     private ImageView profileImage;
     private TextView userName, userWeight, userHeight, userGender, userActivity, userAge, userBMI, userWeightGoal, userCalories;
-    private Button setProfileImage;
+    private Button setProfileImage, updateUserInput;
     DatabaseHelper databaseHelper;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userprofile);
+        getSupportActionBar().hide();
 
+        updateUserInput = findViewById(R.id.updateValuesButton);
         profileImage = findViewById(R.id.profileImage);
         setProfileImage = findViewById(R.id.changeProfilePicture);
         userName = findViewById(R.id.userName);
@@ -38,6 +40,7 @@ public class UserProfileActivity extends AppCompatActivity{
 
         databaseHelper = new DatabaseHelper(this);
 
+        //Sets all text to to their respective value in DB
         userName.setText(databaseHelper.getStringUserName());
         userWeight.setText((databaseHelper.getStringWeight()) + "lbs");
         userHeight.setText((databaseHelper.getStringHeight()) + "cm");
@@ -56,6 +59,20 @@ public class UserProfileActivity extends AppCompatActivity{
                 startActivityForResult(openGallaryIntent,1000);
             }
         });
+        //Opens Input Activity if user wants to update their profile
+        updateUserInput.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserProfileActivity.this, InputActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+    //If user presses backspace, take them back to home screen. Use to avoid user from accidentally backing into input screen
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(UserProfileActivity.this, HomeActivity.class);
+        startActivity(intent);
     }
 
     @Override

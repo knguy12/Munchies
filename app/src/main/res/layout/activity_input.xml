@@ -2,7 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/backgroundColor"
+    android:background="@drawable/userinputbg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".InputActivity">
@@ -79,18 +79,19 @@
 
     <Button
         android:id="@+id/confirmButton"
-        android:layout_width="128dp"
-        android:layout_height="41dp"
+        android:layout_width="228dp"
+        android:layout_height="48dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:background="#FFFFFF"
-        android:text="Insert Data"
+        android:background="@drawable/bluebox"
+        android:fontFamily="sans-serif-light"
+        android:text="Continue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.987" />
+        app:layout_constraintVertical_bias="0.988" />
 
     <RadioGroup
         android:id="@+id/genderGroup"
@@ -111,12 +112,14 @@
             android:id="@+id/maleRadio"
             android:layout_width="209dp"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
             android:text="Male" />
 
         <RadioButton
             android:id="@+id/femaleRadio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
             android:text="Female" />
     </RadioGroup>
 
@@ -139,19 +142,22 @@
             android:id="@+id/littleToNoButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Little to No Exercise" />
+            android:fontFamily="sans-serif-medium"
+            android:text="Little to None" />
 
         <RadioButton
             android:id="@+id/moderateButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Moderate Exercise (2 or more times a Week)" />
+            android:fontFamily="sans-serif-medium"
+            android:text="Moderate(2-3 times a week)" />
 
         <RadioButton
             android:id="@+id/extremeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Extreme Exercise (6 or more times a week)" />
+            android:fontFamily="sans-serif-medium"
+            android:text="Excessive(6 or more times a week)" />
     </RadioGroup>
 
     <TextView
@@ -162,7 +168,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:fontFamily="@font/ubuntu_bold"
+        android:fontFamily="sans-serif-black"
         android:text="Gender"
         android:textAlignment="center"
         android:textSize="30dp"
@@ -181,7 +187,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:fontFamily="@font/ubuntu_bold"
+        android:fontFamily="sans-serif-black"
         android:text="Daily Exercise"
         android:textAlignment="center"
         android:textSize="30dp"
@@ -194,22 +200,22 @@
 
     <TextView
         android:id="@+id/textView10"
-        android:layout_width="180dp"
-        android:layout_height="37dp"
+        android:layout_width="252dp"
+        android:layout_height="46dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:fontFamily="@font/ubuntu_bold"
+        android:fontFamily="sans-serif-black"
         android:text="Weight Goal"
         android:textAlignment="center"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.269"
+        app:layout_constraintHorizontal_bias="0.097"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.764" />
+        app:layout_constraintVertical_bias="0.76" />
 
     <RadioGroup
         android:id="@+id/weightGroup"
@@ -230,18 +236,21 @@
             android:id="@+id/loseWeightButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
             android:text="Lose Weight" />
 
         <RadioButton
             android:id="@+id/maintainWeightButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
             android:text="Maintain Weight" />
 
         <RadioButton
             android:id="@+id/gainWeightButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
             android:text="Gain Weight" />
     </RadioGroup>
 
