@@ -21,6 +21,7 @@ public class HomeActivity extends AppCompatActivity {
         recipeBtn = (Button) findViewById(R.id.recipeBtn);
         mapBtn = (Button) findViewById(R.id.button2);
 
+
         recipeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

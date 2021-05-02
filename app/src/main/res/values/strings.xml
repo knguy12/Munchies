@@ -8,4 +8,120 @@
 
     <string name="google_maps_API_key">AIzaSyB__t6Q7aId_6SGJ-_aee_9l3lxOMUMqd0</string>
 
+    <string-array name="items">
+        <item>Chickpea Curry</item>
+        <item>Sweet Potato-Black Bean Burgers</item>
+        <item>Cabbage Diet Soup</item>
+        <item>Instant Pot Vegetable Soup</item>
+        <item>Vegan Pumpkin Soup</item>
+        <item>Shrimp Scampi Zoodles</item>
+        <item>Hassel Caprese Chicken</item>
+        <item>Crispy Peanut Butter Balls</item>
+        <item>Sheet-Pan Eggs With Spinach Ham</item>
+        <item>Rainbow Frittata</item>
+        <item>Vegan Smoothie Bowl</item>
+        <item>Carrot Soup Recipe</item>
+        <item>Loaded Black Bean Dip</item>
+        <item>Avovado Hummus</item>
+        <item>White Bean and Avocado Toast</item>
+    </string-array>
+    <string-array name="types">
+        <item>Vegan</item>
+        <item>Vegan</item>
+        <item>Vegan</item>
+        <item>Vegan</item>
+        <item>Vegan</item>
+        <item>Keto</item>
+        <item>Keto</item>
+        <item>Keto</item>
+        <item>Keto</item>
+        <item>Keto</item>
+        <item>Low Calories</item>
+        <item>Low Calories</item>
+        <item>Low Calories</item>
+        <item>Low Calories</item>
+        <item>Low Calories</item>
+    </string-array>
+    <string-array name="calories">
+        <item>278 calories</item>
+        <item>454 calories</item>
+        <item>133 calories</item>
+        <item>193 calories</item>
+        <item>298 calories</item>
+        <item>286 calories</item>
+        <item>355 calories</item>
+        <item>112 calories</item>
+        <item>164 calories</item>
+        <item>219 calories</item>
+        <item>338 calories</item>
+        <item>176 calories</item>
+        <item>58 calories</item>
+        <item>156 calories</item>
+        <item>230 calories</item>
+    </string-array>
+    <string-array name="ketoitems">
+        <item>Shrimp Scampi Zoodles</item>
+        <item>Hassel Caprese Chicken</item>
+        <item>Crispy Peanut Butter Balls</item>
+        <item>Sheet-Pan Eggs With Spinach Ham</item>
+        <item>Rainbow Frittata</item>
+    </string-array>
+    <string-array name="ketotypes">
+        <item>Keto</item>
+        <item>Keto</item>
+        <item>Keto</item>
+        <item>Keto</item>
+        <item>Keto</item>
+    </string-array>
+    <string-array name="ketocalories">
+        <item>286 calories</item>
+        <item>355 calories</item>
+        <item>112 calories</item>
+        <item>164 calories</item>
+        <item>219 calories</item>
+    </string-array>
+    <string-array name="lowcalitems">
+        <item>Vegan Smoothie Bowl</item>
+        <item>Carrot Soup Recipe</item>
+        <item>Loaded Black Bean Dip</item>
+        <item>Avovado Hummus</item>
+        <item>White Bean and Avocado Toast</item>
+    </string-array>
+    <string-array name="lowcaltypes">
+        <item>Low Calories</item>
+        <item>Low Calories</item>
+        <item>Low Calories</item>
+        <item>Low Calories</item>
+        <item>Low Calories</item>
+    </string-array>
+    <string-array name="lowcalcalories">
+        <item>338 calories</item>
+        <item>176 calories</item>
+        <item>58 calories</item>
+        <item>156 calories</item>
+        <item>230 calories</item>
+    </string-array>
+    <string-array name="veganitems">
+        <item>Chickpea Curry</item>
+        <item>Sweet Potato-Black Bean Burgers</item>
+        <item>Cabbage Diet Soup</item>
+        <item>Instant Pot Vegetable Soup</item>
+        <item>Vegan Pumpkin Soup</item>
+    </string-array>
+    <string-array name="vegantypes">
+        <item>Vegan</item>
+        <item>Vegan</item>
+        <item>Vegan</item>
+        <item>Vegan</item>
+        <item>Vegan</item>
+    </string-array>
+    <string-array name="vegancalories">
+        <item>278 calories</item>
+        <item>454 calories</item>
+        <item>133 calories</item>
+        <item>193 calories</item>
+        <item>298 calories</item>
+
+    </string-array>
+
 </resources>
