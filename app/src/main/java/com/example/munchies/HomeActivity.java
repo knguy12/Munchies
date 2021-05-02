@@ -37,7 +37,9 @@ public class HomeActivity extends AppCompatActivity {
         mapBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openActivityMap();
+//                openActivityMap();
+                Intent mapActivity = new Intent(HomeActivity.this, MapActivity.class);
+                startActivity(mapActivity);
             }
         });
     }
@@ -59,8 +61,8 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(userProfile);
     }
 
-    public void openActivityMap(){
-        Intent mapActivity = new Intent(HomeActivity.this, MapActivity.class);
-        startActivity(mapActivity);
-    }
+//    public void openActivityMap(){
+//        Intent mapActivity = new Intent(HomeActivity.this, MapActivity.class);
+//        startActivity(mapActivity);
+//    }
 }
