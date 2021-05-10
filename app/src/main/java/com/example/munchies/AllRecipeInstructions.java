@@ -1,14 +1,12 @@
 package com.example.munchies;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Display;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 public class AllRecipeInstructions extends AppCompatActivity {
 
