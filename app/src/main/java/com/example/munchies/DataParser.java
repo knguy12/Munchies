@@ -18,6 +18,8 @@ public class DataParser {
         String phone = "-NA-";
         String hours = "-NA-";
         String rating = "-NA-";
+        String price = "-NA-";
+
 
         String latitude = "";
         String longitude = "";
@@ -30,15 +32,24 @@ public class DataParser {
             if (!googlePlaceJSON.isNull("vicinity")) {
                 vicinity = googlePlaceJSON.getString("vicinity");
             }
+            if (!googlePlaceJSON.isNull("rating")) {
+                rating = googlePlaceJSON.getString("rating");
+            }
+            if (!googlePlaceJSON.isNull("price_level")) {
+                price = googlePlaceJSON.getString("price_level");
+            }
+            if (!googlePlaceJSON.isNull("opening_hours")) {
+                hours = googlePlaceJSON.getString("opening_hours");
+            }
             latitude = googlePlaceJSON.getJSONObject("geometry").getJSONObject("location").getString("lat");
             longitude = googlePlaceJSON.getJSONObject("geometry").getJSONObject("location").getString("lng");
             reference = googlePlaceJSON.getString("reference");
 
             googlePlaceMap.put("name", NameOfPlace);
             googlePlaceMap.put("vicinity", vicinity);
-            googlePlaceMap.put("formatted_phone_number", phone);
+            googlePlaceMap.put("price_level", price);
             googlePlaceMap.put("opening_hours", hours);
-            googlePlaceMap.put("business_status", rating);
+            googlePlaceMap.put("rating", rating);
             googlePlaceMap.put("lat", latitude);
             googlePlaceMap.put("lng", longitude);
             googlePlaceMap.put("reference", reference);

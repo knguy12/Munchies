@@ -20,14 +20,24 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 public class GetNearbyPlaces extends AsyncTask<Object, String, String>{
 
     private String googleplaceData, url;
     private GoogleMap mMap;
+//    Random rand = new Random();
 
     private View popup = null;
     private LayoutInflater inflater = null;
+
+//    String phone = "(925)";
+//    int ph = rand.nextInt(987-120) + 120;
+//    int ph2 = rand.nextInt(11-99) + 99;
+//
+//    String str = Integer.toString(ph);
+//    String str2 = Integer.toString(ph2);
+//    String phone2 = phone + " " + str + " " + str2 + str2;
 
     @Override
     protected String doInBackground(Object... objects) {
@@ -55,26 +65,33 @@ public class GetNearbyPlaces extends AsyncTask<Object, String, String>{
     }
 
     private void DisplayNearbyPlaces(List<HashMap<String, String>> nearByPlacesList) {
-        String tester = "Pop: 17" + "\n\n" + "Address 14";
+
         for (int i = 0; i < nearByPlacesList.size(); i++) {
             MarkerOptions markerOptions = new MarkerOptions();
             HashMap<String, String> googleNearbyPlace = nearByPlacesList.get(i);
 
             String nameOfPlace = googleNearbyPlace.get("name");
             String vicinity = googleNearbyPlace.get("vicinity");
-            String phone = googleNearbyPlace.get("formatted_phone_number");
+//            String phone = googleNearbyPlace.get("formatted_phone_number");
             String hours = googleNearbyPlace.get("opening_hours");
-            String rating = googleNearbyPlace.get("business_status");
+            String rating = googleNearbyPlace.get("rating");
+            String price = googleNearbyPlace.get("price_level");
+
 
             double lat = Double.parseDouble(googleNearbyPlace.get("lat"));
             double lng = Double.parseDouble(googleNearbyPlace.get("lng"));
+
+            if(googleNearbyPlace.get("opening_hours") == "false")
+                hours = "Closed";
+            else if(googleNearbyPlace.get("opening_hours") == "true")
+                hours = "Open";
 
             LatLng latLng = new LatLng(lat, lng);
             markerOptions.position(latLng);
             markerOptions.title(nameOfPlace);
             markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW));
-            markerOptions.snippet("Address: " + vicinity + "\n" + "Phone number: " + phone + "\n" + "Hours: " + hours
-                    + "\n" + "Rating: " + rating);
+            markerOptions.snippet("Address: " + vicinity + "\n" + "Rating: " + rating
+                    + "\n" + "Status: " + hours + "\n" + "Price level[0-5]: " + price);
 
 
             mMap.addMarker(markerOptions);
