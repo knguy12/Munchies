@@ -103,7 +103,7 @@ public class MapsActivity extends FragmentActivity implements
                                 userMarkerOptions.position(latLng);
                                 userMarkerOptions.title(address);
                                 userMarkerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET));
-                                userMarkerOptions.snippet("My Snippet"+"\n"+"1st Line Text"+"\n"+"2nd Line Text");
+                                userMarkerOptions.snippet(userAddress.getLocality() + "\n" + userAddress.getPostalCode());
                                 mMap.addMarker(userMarkerOptions);
 
 
@@ -119,6 +119,36 @@ public class MapsActivity extends FragmentActivity implements
                 } else {
                     Toast.makeText(this, "Please write location name...", Toast.LENGTH_SHORT).show();
                 }
+
+                mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+
+                    @Override
+                    public View getInfoWindow(Marker arg0) {
+                        return null;
+                    }
+
+                    @Override
+                    public View getInfoContents(Marker marker) {
+
+                        LinearLayout info = new LinearLayout(MapsActivity.this);
+                        info.setOrientation(LinearLayout.VERTICAL);
+
+                        TextView title = new TextView(MapsActivity.this);
+                        title.setTextColor(Color.BLACK);
+                        title.setGravity(Gravity.CENTER);
+                        title.setTypeface(null, Typeface.BOLD);
+                        title.setText(marker.getTitle());
+
+                        TextView snippet = new TextView(MapsActivity.this);
+                        snippet.setTextColor(Color.GRAY);
+                        snippet.setText(marker.getSnippet());
+
+                        info.addView(title);
+                        info.addView(snippet);
+
+                        return info;
+                    }
+                });
                 break;
 
 
