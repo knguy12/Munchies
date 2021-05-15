@@ -18,21 +18,27 @@ public class KetoItemAdapter extends BaseAdapter {
         ketoCalories = cal;
         mInflater = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
+
+    //returns amount of items
     @Override
     public int getCount() {
         return ketoItems.length;
     }
 
+    //returns the item
     @Override
     public Object getItem(int i) {
         return ketoItems[i];
     }
 
+    //get item id
     @Override
     public long getItemId(int i) {
         return i;
     }
 
+
+    //sets the text of each text view
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         View v = mInflater.inflate(R.layout.all_recipe_detail, null);

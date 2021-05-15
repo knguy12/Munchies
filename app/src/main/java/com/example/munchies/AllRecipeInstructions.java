@@ -7,10 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Display;
 import android.widget.ImageView;
-
+//creates the instruction activity and sets and scales the image of the instruction
 public class AllRecipeInstructions extends AppCompatActivity {
 
-
+    //creates the instruction activity and sets and scales the image of the instruction
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,8 +19,9 @@ public class AllRecipeInstructions extends AppCompatActivity {
 
         Intent in = getIntent();
         int index = in.getIntExtra("com.example.munchies.ALL_RECIPE_INDEX", -1);
-        //sets image and scales the image to fit any phone size
 
+
+        //sets image and scales the image to fit any phone size
         if(index>-1) {
             int picIndex = getInstr(index);
             ImageView instr = (ImageView) findViewById(R.id.allRecipeImageView);
@@ -44,6 +45,7 @@ public class AllRecipeInstructions extends AppCompatActivity {
 
 
     }
+    //returns the corresponding image depending on the index of the image
     private int getInstr(int index) {
         switch (index) {
             case 0: return R.drawable.chickpeacurry;

@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
+//creates the vegan recipe activity
 public class VeganRecipeActivity extends AppCompatActivity {
 
     ListView veganRecipeView;
@@ -15,6 +15,7 @@ public class VeganRecipeActivity extends AppCompatActivity {
     String[] veganTypes;
     String[] veganCalories;
 
+    //creates and displays the activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

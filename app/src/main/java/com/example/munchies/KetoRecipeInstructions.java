@@ -8,14 +8,17 @@ import android.os.Bundle;
 import android.view.Display;
 import android.widget.ImageView;
 
-public class KetoRecipeInstructions extends AppCompatActivity {
 
+//creates the instruction activity and sets and scales the image of the instruction
+public class KetoRecipeInstructions extends AppCompatActivity {
+    //creates the instruction activity and sets and scales the image of the instruction
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_keto_recipe_instructions);
         Intent in = getIntent();
         int index = in.getIntExtra("com.example.munchies.KETO_RECIPE_INDEX", -1);
+
         //sets image and scales the image to fit any phone size
         if (index > -1) {
             int picIndex = getInstr(index);
@@ -38,7 +41,7 @@ public class KetoRecipeInstructions extends AppCompatActivity {
             instr.setImageBitmap(scaledImg);
         }
     }
-
+    //returns the image depending on the index of the item
     private int getInstr(int index) {
         switch (index) {
             case 0:

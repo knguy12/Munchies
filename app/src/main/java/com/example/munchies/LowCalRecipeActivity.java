@@ -7,12 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
+// creates the low cal recipe activity
 public class LowCalRecipeActivity extends AppCompatActivity {
     ListView lowCalRecipeView;
     String[] LowCalItems;
     String[] LowCalTypes;
     String[] LowCalCalories;
+
+    //creates and displays the activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

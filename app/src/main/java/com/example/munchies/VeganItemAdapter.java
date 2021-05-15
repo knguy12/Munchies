@@ -20,21 +20,25 @@ public class VeganItemAdapter extends BaseAdapter {
         mInflater = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
+    //gets the amount of items
     @Override
     public int getCount() {
         return veganItems.length;
     }
 
+    //gets the item
     @Override
     public Object getItem(int i) {
         return veganItems[i];
     }
 
+    //gets the item id
     @Override
     public long getItemId(int i) {
         return i;
     }
 
+    //sets the text of each text view
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         View v = mInflater.inflate(R.layout.all_recipe_detail, null);

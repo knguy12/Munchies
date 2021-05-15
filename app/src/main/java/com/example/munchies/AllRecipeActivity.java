@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+
+//creates the all recipe activity
 public class AllRecipeActivity extends AppCompatActivity {
 
     ListView allRecipeView;
@@ -15,6 +17,7 @@ public class AllRecipeActivity extends AppCompatActivity {
     String[] types;
     String[] calories;
 
+    //creates and displays the activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

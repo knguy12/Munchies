@@ -8,12 +8,15 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+//creates the keto recipe activity
 public class KetoRecipeActivity extends AppCompatActivity {
     ListView ketoRecipeView;
     String[] ketoItems;
     String[] ketoTypes;
     String[] ketoCalories;
 
+
+    //creates and displays the activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

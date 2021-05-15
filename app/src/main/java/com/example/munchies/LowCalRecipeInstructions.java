@@ -7,9 +7,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Display;
 import android.widget.ImageView;
-
+//creates the instruction activity and sets and scales the image of the instruction
 public class LowCalRecipeInstructions extends AppCompatActivity {
 
+
+    //creates the instruction activity and sets and scales the image of the instruction
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +41,8 @@ public class LowCalRecipeInstructions extends AppCompatActivity {
             instr.setImageBitmap(scaledImg);
         }
     }
+
+    //returns an image depending on the index of the item selected
     private int getInstr(int index) {
         switch (index) {
             case 0:

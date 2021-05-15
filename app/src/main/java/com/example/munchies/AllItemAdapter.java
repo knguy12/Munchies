@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-//an adapter class for the all recipes that changes helps connect the text views layout to the listview to properly display the recipes
+//an adapter class that helps connect the text views layout to the listview to properly display the recipes
 public class AllItemAdapter extends BaseAdapter {
 
     LayoutInflater mInflater;
@@ -21,22 +21,25 @@ public class AllItemAdapter extends BaseAdapter {
         mInflater = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-
+    //returns the amount of items
     @Override
     public int getCount() {
         return items.length;
     }
 
+    //returns the item
     @Override
     public Object getItem(int i) {
         return items[i];
     }
 
+    //returns the item id
     @Override
     public long getItemId(int i) {
         return i;
     }
 
+    //sets the text of each text view
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         View v = mInflater.inflate(R.layout.all_recipe_detail, null);
